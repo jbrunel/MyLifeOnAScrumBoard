@@ -1,0 +1,25 @@
+{
+  "name": "jbrunel",
+  "version": "1.0.0",
+  "description": "My personal website",
+  "private": true,
+  "authors": [
+    "Jérôme Brunel"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "personal",
+    "website",
+    "job",
+    "showcase",
+    "jbrunel"
+  ],
+  "homepage": "https://github.com/jbrunel/jbrunel",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

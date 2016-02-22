@@ -4,6 +4,7 @@
   "description": "My personal website",
   "private": true,
   "scripts": {
+    "install": "bower install",
     "test": "gulp test"
   },
   "repository": {
