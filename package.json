@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/jbrunel/jbrunel/issues"
   },
-  "homepage": "https://github.com/jbrunel/jbrunel#readme"
+  "homepage": "https://github.com/jbrunel/jbrunel#readme",
+  "dependencies": {
+    "bower": "^1.7.7"
+  }
 }
