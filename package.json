@@ -1,0 +1,26 @@
+{
+  "name": "jbrunel",
+  "version": "1.0.0",
+  "description": "My personal website",
+  "private": true,
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbrunel/jbrunel.git"
+  },
+  "keywords": [
+    "personal",
+    "website",
+    "job",
+    "showcase",
+    "jbrunel"
+  ],
+  "author": "Jérôme Brunel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jbrunel/jbrunel/issues"
+  },
+  "homepage": "https://github.com/jbrunel/jbrunel#readme"
+}
