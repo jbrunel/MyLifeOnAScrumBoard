@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "install": "bower install",
+    "start": "gulp",
     "test": "gulp test"
   },
   "repository": {
@@ -26,5 +27,9 @@
   "homepage": "https://github.com/jbrunel/jbrunel#readme",
   "dependencies": {
     "bower": "^1.7.7"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^2.3.1"
   }
 }
