@@ -1,7 +1,8 @@
-$primaryColor: #009688;
-$accentColor: $primaryColor;
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,100);
+
+$backgroundColor: #0e1c4b;
 $textColor: #ffffff;
-$shadowColor: #333333;
+$textFont: "Josefin Sans", sans-serif;
 
 html {
   margin:0;
@@ -10,9 +11,13 @@ html {
   height:100%;
 
   body {
-    background-image: -moz-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
-    background-size: 3px 3px;
-    background-color: $primaryColor;
+    background-color: $backgroundColor;
     color: $textColor;
+    font-family: $textFont;
   }
+}
+
+.title {
+  font-size: 6rem;
+  text-transform: uppercase;
 }
