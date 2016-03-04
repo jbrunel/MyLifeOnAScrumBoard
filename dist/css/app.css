@@ -8,12 +8,12 @@ html {
     color: #000000;
     font-family: "Permanent Marker", sans-serif; }
 
-.content:before {
+.board:before {
   content: "";
   position: fixed;
   left: 0;
   right: 0;
-  z-index: -1;
+  z-index: -2;
   display: block;
   background: url("../img/background.jpg") no-repeat fixed center;
   width: 100%;
@@ -23,3 +23,26 @@ html {
 h1 {
   font-size: 3rem;
   text-align: center; }
+
+h2 {
+  font-size: 2.5em; }
+
+.content {
+  column-count: 3 150px;
+  column-gap: 4em; }
+  .content .column {
+    width: 30%;
+    min-width: 200px;
+    padding: 1%;
+    float: left;
+    text-align: center; }
+  .content .postit {
+    margin: auto;
+    display: block;
+    padding: 2em 0;
+    margin: 1em 0;
+    font-size: 1.5em; }
+    .content .postit.yellow {
+      background-color: #f8ef7a; }
+    .content .postit.blue {
+      background-color: #c9d4ff; }
