@@ -1,8 +1,8 @@
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,100);
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 
 $backgroundColor: #0e1c4b;
-$textColor: #ffffff;
-$textFont: "Josefin Sans", sans-serif;
+$textColor: #000000;
+$textFont: "Permanent Marker", sans-serif;
 
 html {
   margin:0;
@@ -10,14 +10,28 @@ html {
   width:100%;
   height:100%;
 
-  body {
-    background-color: $backgroundColor;
+  body, body > * {
     color: $textColor;
     font-family: $textFont;
   }
 }
 
-.title {
-  font-size: 6rem;
-  text-transform: uppercase;
+.content {
+  &:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    display: block;
+    background: url("../img/background.jpg") no-repeat fixed center;
+    width: 100%;
+    height: 100%;
+    filter: blur(30px);
+  }
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
 }

@@ -24,9 +24,16 @@ gulp.task("css", function() {
     .pipe(connect.reload());
 });
 
+gulp.task("img", function() {
+  gulp.src("./app/img/*.+(jpg|png)")
+    .pipe(gulp.dest("./dist/img"))
+    .pipe(connect.reload());
+});
+
 gulp.task("watch", function() {
   gulp.watch(["./app/*.html"], ["html"]);
   gulp.watch(["./app/*.scss"], ["css", "html"]);
+  gulp.watch(["./app/img/*.+(jpg|png)"], ["img", "css", "html"]);
 });
 
-gulp.task("default", ["connect", "css", "html", "watch"]);
+gulp.task("default", ["connect", "img", "css", "html", "watch"]);
