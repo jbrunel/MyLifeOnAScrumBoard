@@ -3,7 +3,8 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  font-size: 16px; }
   html body, html body > * {
     color: #000000;
     font-family: "Permanent Marker", sans-serif; }
@@ -24,24 +25,35 @@ h1 {
   font-size: 3rem;
   text-align: center; }
 
-h2 {
-  font-size: 2.5em; }
+header {
+  display: block;
+  width: 100%;
+  font-size: 2.5rem;
+  text-align: center; }
 
 .content {
-  column-count: 3 150px;
-  column-gap: 4em; }
+  max-width: 100rem;
+  margin: auto;
+  display: flex;
+  flex-flow: row wrap; }
   .content .column {
-    width: 30%;
-    min-width: 200px;
-    padding: 1%;
-    float: left;
-    text-align: center; }
+    flex: 1 1 20rem;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: flex-start; }
   .content .postit {
-    margin: auto;
     display: block;
-    padding: 2em 0;
-    margin: 1em 0;
-    font-size: 1.5em; }
+    padding: 2rem;
+    margin: 1rem;
+    font-size: 1.6rem;
+    vertical-align: middle;
+    flex: 1 1 20rem;
+    max-width: 16rem;
+    height: 11rem; }
     .content .postit.yellow {
       background-color: #f8ef7a; }
     .content .postit.blue {
