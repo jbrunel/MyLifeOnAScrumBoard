@@ -17,7 +17,7 @@ html {
   }
 }
 
-.board {
+main {
   &:before {
     content: "";
     position: fixed;
@@ -44,14 +44,14 @@ header {
   text-align: center;
 }
 
-.content {
+section.content {
 
   max-width: 100rem;
   margin: auto;
   display: flex;
   flex-flow: row wrap;
 
-  .column {
+  div.column {
     flex: 1 1 20rem;
     padding: 1rem;
     text-align: center;

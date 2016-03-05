@@ -9,7 +9,7 @@ html {
     color: #000000;
     font-family: "Permanent Marker", sans-serif; }
 
-.board:before {
+main:before {
   content: "";
   position: fixed;
   left: 0;
@@ -31,12 +31,12 @@ header {
   font-size: 2.5rem;
   text-align: center; }
 
-.content {
+section.content {
   max-width: 100rem;
   margin: auto;
   display: flex;
   flex-flow: row wrap; }
-  .content .column {
+  section.content div.column {
     flex: 1 1 20rem;
     padding: 1rem;
     text-align: center;
@@ -45,7 +45,7 @@ header {
     justify-content: space-around;
     align-items: flex-start;
     align-content: flex-start; }
-  .content .postit {
+  section.content .postit {
     display: block;
     padding: 2rem;
     margin: 1rem;
@@ -54,7 +54,7 @@ header {
     flex: 1 1 20rem;
     max-width: 16rem;
     height: 11rem; }
-    .content .postit.yellow {
+    section.content .postit.yellow {
       background-color: #f8ef7a; }
-    .content .postit.blue {
+    section.content .postit.blue {
       background-color: #c9d4ff; }
