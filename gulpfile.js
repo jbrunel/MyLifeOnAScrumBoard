@@ -12,7 +12,10 @@ gulp.task("connect", function() {
 gulp.task("html", function() {
   var sources = gulp.src(["./dist/css/*.css", "./dist/js/*.js"]);
   gulp.src("./app/index.html")
-    .pipe(inject(sources))
+    .pipe(inject(sources, {
+      ignorePath: "dist/",
+      addRootSlash: false
+    }))
     .pipe(gulp.dest("./dist/"))
     .pipe(connect.reload());
 });
