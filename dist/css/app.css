@@ -67,7 +67,7 @@ section.board {
   vertical-align: middle;
   flex: 1 1 20rem;
   max-width: 16rem;
-  height: 11rem;
+  min-height: 11rem;
   box-shadow: 0 15px 5px 0 rgba(42, 42, 42, 0.4); }
   .postit.yellow {
     background-color: #f8ef7a;
@@ -75,3 +75,6 @@ section.board {
   .postit.blue {
     background-color: #c9d4ff;
     background: linear-gradient(135deg, #c9d4ff 0%, #c9d4ff 75%, #e0e7ff 100%); }
+  .postit.pink {
+    background-color: #e2acbe;
+    background: linear-gradient(135deg, #e2acbe 0%, #e2acbe 75%, #ddbac5 100%); }
