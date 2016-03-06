@@ -37,7 +37,7 @@ section.links {
   text-align: center;
   font-size: 1.2rem;
   text-transform: uppercase;
-  font-family: "Josefin Sans"; }
+  font-family: "Josefin Sans", sans-serif; }
   section.links a {
     color: #252525;
     text-decoration: none;
