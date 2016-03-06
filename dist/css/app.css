@@ -20,7 +20,7 @@ main:before {
   background: url("../img/background.jpg") no-repeat fixed center;
   width: 100%;
   height: 100%;
-  filter: blur(20px); }
+  filter: blur(10px); }
 
 h1 {
   font-size: 3rem;
