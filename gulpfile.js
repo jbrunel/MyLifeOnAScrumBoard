@@ -40,3 +40,4 @@ gulp.task("watch", function() {
 });
 
 gulp.task("default", ["connect", "img", "css", "html", "watch"]);
+gulp.task("test", ["img", "css", "html"]);
