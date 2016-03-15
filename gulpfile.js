@@ -1,7 +1,10 @@
 var gulp = require("gulp"),
     connect = require("gulp-connect"),
     sass = require("gulp-sass"),
-    inject = require("gulp-inject");
+    inject = require("gulp-inject"),
+    concat = require('gulp-concat');
+
+var BOWER_PATH = "./bower_components/";
 
 gulp.task("connect", function() {
   connect.server({
@@ -10,7 +13,10 @@ gulp.task("connect", function() {
 });
 
 gulp.task("html", function() {
-  var sources = gulp.src(["./dist/css/*.css", "./dist/js/*.js"]);
+  var sources = gulp.src([
+      "./dist/css/*.css",
+      "./dist/js/*.js"
+    ]);
   gulp.src("./app/index.html")
     .pipe(inject(sources, {
       ignorePath: "dist/",
@@ -20,9 +26,21 @@ gulp.task("html", function() {
     .pipe(connect.reload());
 });
 
+gulp.task("js", function() {
+  var sources = [
+      BOWER_PATH + "angular/angular.min.js",
+      "./app/*.js"
+    ];
+  gulp.src(sources)
+    .pipe(concat("app.js"))
+    .pipe(gulp.dest("./dist/js"))
+    .pipe(connect.reload());
+});
+
 gulp.task("css", function() {
-  gulp.src("./app/**/*.scss")
+  gulp.src("./app/*.scss")
     .pipe(sass.sync().on("error", sass.logError))
+    .pipe(concat("app.css"))
     .pipe(gulp.dest("./dist/css"))
     .pipe(connect.reload());
 });
@@ -35,9 +53,10 @@ gulp.task("img", function() {
 
 gulp.task("watch", function() {
   gulp.watch(["./app/*.html"], ["html"]);
+  gulp.watch(["./app/*.js"], ["js", "html"]);
   gulp.watch(["./app/*.scss"], ["css", "html"]);
   gulp.watch(["./app/img/*.+(jpg|png)"], ["img", "css", "html"]);
 });
 
-gulp.task("default", ["connect", "img", "css", "html", "watch"]);
-gulp.task("test", ["img", "css", "html"]);
+gulp.task("default", ["connect", "img", "js", "css", "html", "watch"]);
+gulp.task("test", ["img", "js", "css", "html"]);
