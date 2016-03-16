@@ -64,7 +64,7 @@ section.board {
   display: block;
   font-family: "Patrick Hand", sans-serif;
   padding: 2rem;
-  margin: 1rem 0 0.5rem;
+  margin: 1rem 0.5rem 0.5rem;
   font-size: 2.1rem;
   vertical-align: middle;
   flex: 1 1 20rem;
