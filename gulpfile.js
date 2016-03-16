@@ -2,7 +2,9 @@ var gulp = require("gulp"),
     connect = require("gulp-connect"),
     sass = require("gulp-sass"),
     inject = require("gulp-inject"),
-    concat = require('gulp-concat');
+    concat = require("gulp-concat"),
+    es = require("event-stream"),
+    templateCache = require("gulp-angular-templatecache");
 
 var BOWER_PATH = "./bower_components/";
 
@@ -27,18 +29,24 @@ gulp.task("html", function() {
 });
 
 gulp.task("js", function() {
-  var sources = [
-      BOWER_PATH + "angular/angular.min.js",
-      "./app/*.js"
-    ];
-  gulp.src(sources)
+  var js = [
+    BOWER_PATH + "angular/angular.min.js",
+    "./app/*.js"
+  ];
+
+  return es.merge(gulp.src(js), getTemplateStream())
     .pipe(concat("app.js"))
     .pipe(gulp.dest("./dist/js"))
     .pipe(connect.reload());
 });
 
+function getTemplateStream() {
+  return gulp.src("./app/templates/*.html")
+    .pipe(templateCache());
+}
+
 gulp.task("css", function() {
-  gulp.src("./app/*.scss")
+  return gulp.src("./app/*.scss")
     .pipe(sass.sync().on("error", sass.logError))
     .pipe(concat("app.css"))
     .pipe(gulp.dest("./dist/css"))
@@ -46,7 +54,7 @@ gulp.task("css", function() {
 });
 
 gulp.task("img", function() {
-  gulp.src("./app/img/*.+(jpg|png)")
+  return gulp.src("./app/img/*.+(jpg|png)")
     .pipe(gulp.dest("./dist/img"))
     .pipe(connect.reload());
 });
@@ -58,5 +66,5 @@ gulp.task("watch", function() {
   gulp.watch(["./app/img/*.+(jpg|png)"], ["img", "css", "html"]);
 });
 
-gulp.task("default", ["connect", "img", "js", "css", "html", "watch"]);
+gulp.task("default", ["connect", "watch", "img", "js", "css", "html"]);
 gulp.task("test", ["img", "js", "css", "html"]);
