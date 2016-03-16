@@ -1,4 +1,4 @@
-angular.module("app", [])
+angular.module("app", ["templates"])
 .controller("ToDoController", ["$scope", ($scope) => {
 
   $scope.tasks = [

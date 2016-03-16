@@ -3,7 +3,7 @@ var gulp = require("gulp"),
     sass = require("gulp-sass"),
     inject = require("gulp-inject"),
     concat = require("gulp-concat"),
-    es = require("event-stream"),
+    streamqueue = require("streamqueue"),
     templateCache = require("gulp-angular-templatecache");
 
 var BOWER_PATH = "./bower_components/";
@@ -34,16 +34,16 @@ gulp.task("js", function() {
     "./app/*.js"
   ];
 
-  return es.merge(gulp.src(js), getTemplateStream())
+  var jsStream = gulp.src(js);
+
+  var templateStream = gulp.src("./app/templates/*.html")
+    .pipe(templateCache({standalone:true}));
+
+  return streamqueue({objectMode: true}, jsStream, templateStream)
     .pipe(concat("app.js"))
     .pipe(gulp.dest("./dist/js"))
     .pipe(connect.reload());
 });
-
-function getTemplateStream() {
-  return gulp.src("./app/templates/*.html")
-    .pipe(templateCache());
-}
 
 gulp.task("css", function() {
   return gulp.src("./app/*.scss")
@@ -61,7 +61,7 @@ gulp.task("img", function() {
 
 gulp.task("watch", function() {
   gulp.watch(["./app/*.html"], ["html"]);
-  gulp.watch(["./app/*.js"], ["js", "html"]);
+  gulp.watch(["./app/*.js", "./app/templates/*.html"], ["js", "html"]);
   gulp.watch(["./app/*.scss"], ["css", "html"]);
   gulp.watch(["./app/img/*.+(jpg|png)"], ["img", "css", "html"]);
 });
