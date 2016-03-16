@@ -66,4 +66,14 @@ angular.module("app", ["templates"])
     }
   ];
 
-}]);
+}])
+.directive("postit", function() {
+  return {
+    restrict: "E",
+    replace: true,
+    templateUrl: "task.html",
+    scope: {
+      task: "="
+    }
+  };
+});

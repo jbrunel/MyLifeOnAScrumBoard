@@ -374,6 +374,16 @@ angular.module("app", ["templates"])
     }
   ];
 
-}]);
+}])
+.directive("postit", function() {
+  return {
+    restrict: "E",
+    replace: true,
+    templateUrl: "task.html",
+    scope: {
+      task: "="
+    }
+  };
+});
 
-angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("task.html","<div class=\"postit yellow\">{{task.name}}<br/>@{{task.where}}</div>\n");}]);
+angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("task.html","<div class=\"postit\" ng-class=\"{yellow: task.job, blue: task.certification, pink: task.school}\">{{task.name}}<br/>@{{task.where}}</div>\n");}]);
