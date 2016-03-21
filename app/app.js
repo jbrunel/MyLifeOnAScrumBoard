@@ -1,5 +1,5 @@
 angular.module("app", ["templates"])
-.controller("ToDoController", ["$scope", ($scope) => {
+.controller("ToDoController", ["$scope", function($scope) {
 
   $scope.tasks = [
     {
@@ -10,7 +10,7 @@ angular.module("app", ["templates"])
   ];
 
 }])
-.controller("InProgressController", ["$scope", ($scope) => {
+.controller("InProgressController", ["$scope", function($scope) {
 
   $scope.tasks = [
     {
@@ -21,7 +21,7 @@ angular.module("app", ["templates"])
   ];
 
 }])
-.controller("DoneController", ["$scope", ($scope) => {
+.controller("DoneController", ["$scope", function($scope) {
 
   $scope.tasks = [
     {
