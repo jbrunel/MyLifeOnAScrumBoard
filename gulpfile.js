@@ -4,12 +4,15 @@ var gulp = require("gulp"),
     inject = require("gulp-inject"),
     concat = require("gulp-concat"),
     streamqueue = require("streamqueue"),
-    templateCache = require("gulp-angular-templatecache");
+    templateCache = require("gulp-angular-templatecache"),
+    cssnano = require("gulp-cssnano"),
+    sourcemaps = require("gulp-sourcemaps");
 
 var BOWER_PATH = "./bower_components/";
 
 gulp.task("connect", function() {
   connect.server({
+    root: "dist",
     livereload: true
   });
 });
@@ -49,6 +52,9 @@ gulp.task("css", function() {
   return gulp.src("./app/*.scss")
     .pipe(sass.sync().on("error", sass.logError))
     .pipe(concat("app.css"))
+    .pipe(sourcemaps.init())
+    .pipe(cssnano())
+    .pipe(sourcemaps.write(".", {includeContent: true, sourceMappingURLPrefix: "/css"}))
     .pipe(gulp.dest("./dist/css"))
     .pipe(connect.reload());
 });
