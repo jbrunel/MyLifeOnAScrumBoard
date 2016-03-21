@@ -6,6 +6,7 @@ var gulp = require("gulp"),
     streamqueue = require("streamqueue"),
     templateCache = require("gulp-angular-templatecache"),
     cssnano = require("gulp-cssnano"),
+    uglify = require("gulp-uglify"),
     sourcemaps = require("gulp-sourcemaps");
 
 var BOWER_PATH = "./bower_components/";
@@ -44,6 +45,9 @@ gulp.task("js", function() {
 
   return streamqueue({objectMode: true}, jsStream, templateStream)
     .pipe(concat("app.js"))
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
+    .pipe(sourcemaps.write(".", {includeContent: true, sourceMappingURLPrefix: "/js"}))
     .pipe(gulp.dest("./dist/js"))
     .pipe(connect.reload());
 });
