@@ -18,21 +18,20 @@ html {
   }
 }
 
-main {
-  &:before {
-    content: "";
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: -2;
-    display: block;
-    background: url("../img/background.jpg") no-repeat fixed center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    @include prefix(filter, blur(7px), webkit moz ms o);
-    @include prefix(transform, scale(1.03), webkit moz ms o);
-  }
+background {
+  content: " ";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -2;
+  display: block;
+  background: url("../img/background.jpg") no-repeat fixed center;
+  background-position: 50% 0%;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  @include prefix(filter, blur(7px), webkit moz ms o);
+  @include prefix(transform, scale(1.1), webkit moz ms o);
 }
 
 h1 {
