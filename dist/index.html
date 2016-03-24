@@ -66,15 +66,15 @@
       <section class="board">
         <div class="column" ng-controller="ToDoController">
           <header>To Do</header>
-          <postit ng-repeat="task in tasks" task="task" />
+          <postit ng-repeat="task in ::tasks" task="task" />
         </div>
         <div class="column" ng-controller="InProgressController">
           <header>In Progress</header>
-          <postit ng-repeat="task in tasks" task="task" />
+          <postit ng-repeat="task in ::tasks" task="task" />
         </div>
         <div class="column" ng-controller="DoneController">
           <header>Done</header>
-          <postit ng-repeat="task in tasks" task="task" />
+          <postit ng-repeat="task in ::tasks" task="task" />
         </div>
       </section>
     </main>
