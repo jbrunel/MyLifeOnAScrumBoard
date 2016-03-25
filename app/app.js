@@ -70,15 +70,10 @@ angular.module("app", ["templates"])
 .directive("background", ["$window", "$document", function($window, $document) {
   return {
     restrict: "E",
-    templateUrl: "task.html",
-    scope: {
-      task: "="
-    },
     link: function(scope, element) {
       angular.element($window).bind("scroll", function() {
         var percentage = Math.floor(Math.min(($window.pageYOffset/($document[0].body.clientHeight - $window.innerHeight)) * 100, 100));
-        element.css("background-position", "50% " + percentage + "%");
-        console.log(percentage);
+        element.css("transform", "scale(1.45) translateY(" + -percentage + "px)");
       });
     }
   };
