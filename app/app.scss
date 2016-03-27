@@ -23,7 +23,7 @@ background {
   position: fixed;
   left: 0;
   right: 0;
-  z-index: -2;
+  z-index: -999;
   display: block;
   background: url("../img/background.jpg") no-repeat fixed center;
   background-position: 50% 0%;
@@ -79,6 +79,7 @@ section.board {
 }
 
 .postit {
+  position: relative;
   display: block;
   font-family: "Patrick Hand", sans-serif;
   padding: 2rem;
@@ -103,5 +104,19 @@ section.board {
   &.pink {
     background-color: #e2acbe;
     background: linear-gradient(135deg, #e2acbe 0%, #e2acbe 75%, #ddbac5 100%);
+  }
+
+  &.avatar:after {
+    content: "";
+    position: absolute;
+    display: block;
+    right: -19px;
+    bottom: -12px;
+    width: 9rem;
+    height: 9rem;
+    z-index: 999;
+    background-image: url("../img/avatar.png");
+    background-size: cover;
+    @include prefix(filter, drop-shadow(0 5px 5px rgba(42, 42, 42, 0.4)), webkit moz ms o);
   }
 }

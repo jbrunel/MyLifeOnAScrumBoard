@@ -16,7 +16,8 @@ angular.module("app", ["templates"])
     {
       "name": "Web Developer",
       "where": "Amadeus IT Group",
-      "job": true
+      "job": true,
+      "avatar": true
     }
   ];
 
@@ -84,7 +85,8 @@ angular.module("app", ["templates"])
     replace: true,
     templateUrl: "task.html",
     scope: {
-      task: "="
+      task: "=",
+      "avatar": "="
     }
   };
 });
