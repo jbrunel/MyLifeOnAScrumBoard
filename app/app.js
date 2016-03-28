@@ -1,18 +1,16 @@
 angular.module("app", ["templates"])
-.controller("ToDoController", ["$scope", function($scope) {
+.controller("AppController", ["$scope", function($scope) {
 
-  $scope.tasks = [
+  $scope.toDo = [
     {
       "name": "Get A Job",
       "where": "Your Company",
-      "job": true
+      "job": true,
+      "draggable": true
     }
   ];
 
-}])
-.controller("InProgressController", ["$scope", function($scope) {
-
-  $scope.tasks = [
+  $scope.inProgress = [
     {
       "name": "Web Developer",
       "where": "Amadeus IT Group",
@@ -21,10 +19,7 @@ angular.module("app", ["templates"])
     }
   ];
 
-}])
-.controller("DoneController", ["$scope", function($scope) {
-
-  $scope.tasks = [
+  $scope.done = [
     {
       "name": "Certified ScrumMaster",
       "where": "ScrumAlliance",
@@ -67,6 +62,12 @@ angular.module("app", ["templates"])
     }
   ];
 
+  $scope.onDrop = function(task) {
+    $scope.toDo = [];
+    $scope.inProgress.unshift(task);
+    $scope.$apply();
+  };
+
 }])
 .directive("background", ["$window", "$document", function($window, $document) {
   return {
@@ -86,7 +87,68 @@ angular.module("app", ["templates"])
     templateUrl: "task.html",
     scope: {
       task: "=",
-      "avatar": "="
+      avatar: "="
+    },
+    link: function(scope, el) {
+      if(scope.task.draggable) {
+
+        function getTaskType(task) {
+          if(task.job) return "job";
+          if(task.school) return "school";
+          if(task.certification) return "certification";
+        }
+
+        el.attr("draggable", true);
+        el.bind("dragstart", function(e) {
+          e.dataTransfer.setData("taskName", scope.task.name);
+          e.dataTransfer.setData("taskWhere", scope.task.where);
+          e.dataTransfer.setData("taskType", getTaskType(scope.task));
+        });
+      }
     }
   };
-});
+})
+.directive("onDrop", ["$document", function($document) {
+  return {
+    restrict: "A",
+    scope: {
+      onDrop: "&"
+    },
+    link: function(scope, el) {
+
+      $document.bind("drag", function(e) {
+        el.addClass("dragInProgress");
+      });
+
+      $document.bind("dragend", function(e) {
+        el.removeClass("dragInProgress");
+      });
+
+      var dropElement = angular.element(el[0].querySelector("#dropTarget"));
+      dropElement.bind("dragover", function(e) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+      });
+
+      dropElement.bind("dragenter", function(e) {
+        angular.element(e.target).addClass("over");
+      });
+
+      dropElement.bind("dragleave", function(e) {
+        angular.element(e.target).removeClass("over");
+      });
+
+      dropElement.bind("drop", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        el.removeClass("dragInProgress");
+        var task = {};
+        task.name = e.dataTransfer.getData("taskName");
+        task.where = e.dataTransfer.getData("taskWhere");
+        task.avatar = true;
+        task[e.dataTransfer.getData("taskType")] = true;
+        scope.onDrop({task: task});
+      });
+    }
+  };
+}]);

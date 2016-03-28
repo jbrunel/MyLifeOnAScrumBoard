@@ -61,18 +61,19 @@
         <a href="http://stackexchange.com/users/2812021/j%C3%A9r%C3%B4me-brunel?tab=accounts" title="Check Out My StackExchange Profile" target="_blank"><i class="fa fa-stack-exchange"></i></a>
         <a href="https://twitter.com/jeerbl" title="Follow Me on Twitter" target="_blank"><i class="fa fa-twitter-square"></i></a>
       </section>
-      <section class="board">
-        <div class="column" ng-controller="ToDoController">
+      <section class="board" ng-controller="AppController">
+        <div class="column">
           <header>To Do</header>
-          <postit ng-repeat="task in ::tasks" task="task" />
+          <postit ng-repeat="task in toDo" task="task" />
         </div>
-        <div class="column" ng-controller="InProgressController">
+        <div on-drop="onDrop(task)" class="column">
           <header>In Progress</header>
-          <postit ng-repeat="task in ::tasks" task="task" />
+          <div id="dropTarget" class="dropTarget"></div>
+          <postit ng-repeat="task in inProgress" task="task" />
         </div>
-        <div class="column" ng-controller="DoneController">
+        <div class="column">
           <header>Done</header>
-          <postit ng-repeat="task in ::tasks" task="task" />
+          <postit ng-repeat="task in ::done" task="task" />
         </div>
       </section>
     </main>

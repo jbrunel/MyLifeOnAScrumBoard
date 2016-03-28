@@ -78,6 +78,25 @@ section.board {
 
 }
 
+.dropTarget {
+  display: none;
+  background-color: rgba(50, 50, 50, 0.3);
+  border: 0.3rem dashed #404040;
+  flex: 1 1 20rem;
+  max-width: 16rem;
+  min-height: 11rem;
+  padding: 1.7rem;
+  margin: 1rem 0.5rem 0.5rem;
+}
+
+.dragInProgress .dropTarget {
+  display: block;
+
+  &.over {
+    background-color: rgba(50, 50, 50, 0.1);
+  }
+}
+
 .postit {
   position: relative;
   display: block;
@@ -118,5 +137,12 @@ section.board {
     background-image: url("../img/avatar.png");
     background-size: cover;
     @include prefix(filter, drop-shadow(0 5px 5px rgba(42, 42, 42, 0.4)), webkit moz ms o);
+  }
+
+  &[draggable=true] {
+    cursor: grab;
+    &:active {
+      cursor: grabbing;
+    }
   }
 }
