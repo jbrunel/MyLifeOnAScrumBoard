@@ -62,16 +62,16 @@
         <a href="https://twitter.com/jeerbl" title="Follow Me on Twitter" target="_blank"><i class="fa fa-twitter-square"></i></a>
       </section>
       <section class="board" ng-controller="AppController">
-        <div class="column">
+        <div class="todo column">
           <header>To Do</header>
           <postit ng-repeat="task in toDo" task="task" />
         </div>
-        <div on-drop="onDrop(task)" class="column">
+        <div on-drop="onDrop(task)" class="inprogress column">
           <header>In Progress</header>
           <div id="dropTarget" class="dropTarget"></div>
           <postit ng-repeat="task in inProgress" task="task" />
         </div>
-        <div class="column">
+        <div class="done column">
           <header>Done</header>
           <postit ng-repeat="task in ::done" task="task" />
         </div>

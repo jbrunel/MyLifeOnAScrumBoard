@@ -80,7 +80,7 @@ angular.module("app", ["templates"])
     }
   };
 }])
-.directive("postit", function() {
+.directive("postit", ["$document", function($document) {
   return {
     restrict: "E",
     replace: true,
@@ -92,37 +92,37 @@ angular.module("app", ["templates"])
     link: function(scope, el) {
       if(scope.task.draggable) {
 
-        function getTaskType(task) {
+        var getTaskType = function(task) {
           if(task.job) return "job";
           if(task.school) return "school";
           if(task.certification) return "certification";
-        }
+        };
+
+        var inprogress = angular.element($document[0].querySelector(".inprogress"));
 
         el.attr("draggable", true);
+
         el.bind("dragstart", function(e) {
           e.dataTransfer.setData("taskName", scope.task.name);
           e.dataTransfer.setData("taskWhere", scope.task.where);
           e.dataTransfer.setData("taskType", getTaskType(scope.task));
+          inprogress.addClass("dragInProgress");
+        });
+
+        el.bind("dragend", function() {
+          inprogress.removeClass("dragInProgress");
         });
       }
     }
   };
-})
-.directive("onDrop", ["$document", function($document) {
+}])
+.directive("onDrop", function() {
   return {
     restrict: "A",
     scope: {
       onDrop: "&"
     },
     link: function(scope, el) {
-
-      $document.bind("drag", function(e) {
-        el.addClass("dragInProgress");
-      });
-
-      $document.bind("dragend", function(e) {
-        el.removeClass("dragInProgress");
-      });
 
       var dropElement = angular.element(el[0].querySelector("#dropTarget"));
       dropElement.bind("dragover", function(e) {
@@ -151,4 +151,4 @@ angular.module("app", ["templates"])
       });
     }
   };
-}]);
+});
