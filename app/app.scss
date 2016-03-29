@@ -28,8 +28,8 @@ background {
   background: url("../img/background.jpg") no-repeat fixed 50% 0%/cover;
   min-width: 100%;
   min-height: 100%;
-  @include prefix(filter, blur(7px), webkit moz ms o);
-  @include prefix(transform, scale(1.45) translateY(0px), webkit moz ms o);
+  @include prefixProperty(filter, blur(7px), webkit moz ms o);
+  @include prefixProperty(transform, scale(1.45) translateY(0px), webkit moz ms o);
 }
 
 h1 {
@@ -133,13 +133,13 @@ section.board {
     height: 9rem;
     z-index: 999;
     background: url("../img/avatar.png") no-repeat center/cover;
-    @include prefix(filter, drop-shadow(0 5px 5px rgba(42, 42, 42, 0.4)), webkit moz ms o);
+    @include prefixProperty(filter, drop-shadow(0 5px 5px rgba(42, 42, 42, 0.4)), webkit moz ms o);
   }
 
   &[draggable=true] {
-    cursor: grab;
+    @include prefixValue(cursor, grab, webkit moz ms o);
     &:active {
-      cursor: grabbing;
+      @include prefixValue(cursor, grabbing, webkit moz ms o);
     }
   }
 }
