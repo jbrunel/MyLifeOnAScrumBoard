@@ -103,9 +103,12 @@ angular.module("app", ["templates"])
         el.attr("draggable", true);
 
         el.bind("dragstart", function(e) {
-          e.dataTransfer.setData("taskName", scope.task.name);
-          e.dataTransfer.setData("taskWhere", scope.task.where);
-          e.dataTransfer.setData("taskType", getTaskType(scope.task));
+          var task = {
+            "name": scope.task.name,
+            "where": scope.task.where
+          };
+          task[getTaskType(scope.task)] = true;
+          e.dataTransfer.setData("text", JSON.stringify(task));
           inprogress.addClass("dragInProgress");
         });
 
@@ -142,12 +145,9 @@ angular.module("app", ["templates"])
         e.preventDefault();
         e.stopPropagation();
         el.removeClass("dragInProgress");
-        var task = {};
-        task.name = e.dataTransfer.getData("taskName");
-        task.where = e.dataTransfer.getData("taskWhere");
+        var task = JSON.parse(e.dataTransfer.getData("text"));
         task.avatar = true;
-        task[e.dataTransfer.getData("taskType")] = true;
-        scope.onDrop({task: task});
+        scope.onDrop({"task": task});
       });
     }
   };
