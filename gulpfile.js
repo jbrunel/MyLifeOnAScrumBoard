@@ -37,6 +37,7 @@ gulp.task("html", function() {
 gulp.task("js", function() {
   var js = [
     BOWER_PATH + "angular/angular.min.js",
+    BOWER_PATH + "ng-dialog/js/ngDialog.min.js",
     "./app/*.js"
   ];
 
@@ -55,7 +56,10 @@ gulp.task("js", function() {
 });
 
 gulp.task("css", function() {
-  return gulp.src("./app/*.scss")
+  return gulp.src([
+      "./app/*.scss",
+      BOWER_PATH + "ng-dialog/css/ngDialog.min.css"
+    ])
     .pipe(sass.sync().on("error", sass.logError))
     .pipe(concat("app.css"))
     .pipe(sourcemaps.init())
