@@ -58,7 +58,8 @@ gulp.task("js", function() {
 gulp.task("css", function() {
   return gulp.src([
       "./app/*.scss",
-      BOWER_PATH + "ng-dialog/css/ngDialog.min.css"
+      BOWER_PATH + "ng-dialog/css/ngDialog.min.css",
+      BOWER_PATH + "ng-dialog/css/ngDialog-theme-plain.min.css"
     ])
     .pipe(sass.sync().on("error", sass.logError))
     .pipe(concat("app.css"))
