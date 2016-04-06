@@ -1,5 +1,5 @@
-angular.module("app", ["templates"])
-.controller("AppController", ["$scope", function($scope) {
+angular.module("app", ["templates", "ngDialog"])
+.controller("AppController", ["$scope", "ngDialog", function($scope, ngDialog) {
 
   $scope.toDo = [
     {
@@ -66,6 +66,10 @@ angular.module("app", ["templates"])
     $scope.toDo = [];
     $scope.inProgress.unshift(task);
     $scope.$apply();
+    ngDialog.openConfirm({
+      templateUrl: "modal.html",
+      className: "ngdialog-theme-plain"
+    });
   };
 
 }])

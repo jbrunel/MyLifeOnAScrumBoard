@@ -143,3 +143,30 @@ section.board {
     }
   }
 }
+
+.ngdialog.ngdialog-theme-plain {
+  .ngdialog-overlay {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .ngdialog-content {
+    color: #444444;
+    background-color: #ffffff !important;
+    padding: 2rem 4rem !important;
+  }
+
+  .ngdialog-buttons {
+    margin-top: 1.5rem !important;
+    text-align: center;
+
+    .ngdialog-button {
+      display: inline-block;
+      float: none;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
