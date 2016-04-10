@@ -1,7 +1,10 @@
 @import 'utils';
 
-@import url(https://fonts.googleapis.com/css?family=Patrick+Hand+SC);
-@import url(https://fonts.googleapis.com/css?family=Patrick+Hand);
+@font-face {
+  font-family: "Chunkster Jamz";
+  font-stretch: expanded;
+  src: url(../fonts/ChunksterJamz.ttf);
+}
 
 html {
   margin:0;
@@ -12,7 +15,7 @@ html {
 
   body, body > * {
     color: #000000;
-    font-family: "Patrick Hand SC", sans-serif;
+    font-family: "Chunkster Jamz", sans-serif;
     padding: 0;
     margin: 0;
   }
@@ -35,7 +38,7 @@ background {
 h1 {
   font-size: 4.5rem;
   text-align: center;
-  margin: 0 0;
+  margin: 2rem 0 0;
 }
 
 header {
@@ -62,6 +65,10 @@ section.board {
   margin: 2em auto;
   display: flex;
   flex-flow: row wrap;
+
+  header {
+    font-size: 2.9rem;
+  }
 
   div.column {
     flex: 1 1 20rem;
@@ -98,15 +105,16 @@ section.board {
 .postit {
   position: relative;
   display: block;
-  font-family: "Patrick Hand", sans-serif;
+  font-family: "Chunkster Jamz", cursive;
   padding: 2rem;
   margin: 1rem 0.5rem 0.5rem;
-  font-size: 2.1rem;
+  font-size: 2rem;
   vertical-align: middle;
   flex: 1 1 20rem;
   max-width: 16rem;
   min-height: 11rem;
   box-shadow: 0 15px 5px 0 rgba(42, 42, 42, 0.4);
+  line-height: 2.8rem;
 
   &.yellow {
     background-color: #f8ef7a;
