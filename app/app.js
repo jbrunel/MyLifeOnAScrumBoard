@@ -12,14 +12,19 @@ angular.module("app", ["templates", "ngDialog"])
 
   $scope.inProgress = [
     {
-      "name": "Web Developer",
-      "where": "Amadeus IT Group",
+      "name": "IT Engineer",
+      "where": "TrackInsight",
       "job": true,
       "avatar": true
     }
   ];
 
   $scope.done = [
+    {
+      "name": "Web Developer",
+      "where": "Amadeus IT Group",
+      "job": true
+    },
     {
       "name": "Certified ScrumMaster",
       "where": "ScrumAlliance",
