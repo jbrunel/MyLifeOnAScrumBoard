@@ -1,3 +1,5 @@
+/* global angular */
+
 angular.module("app", ["templates", "ngDialog"])
 .controller("AppController", ["$scope", "ngDialog", function($scope, ngDialog) {
 
