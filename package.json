@@ -4,7 +4,6 @@
   "description": "My personal website",
   "private": true,
   "scripts": {
-    "install": "bower install",
     "start": "gulp",
     "test": "gulp test"
   },
@@ -26,7 +25,8 @@
   },
   "homepage": "https://github.com/jbrunel/MyLifeOnAScrumBoard#readme",
   "dependencies": {
-    "bower": "^1.7.7"
+    "angular": "^1.6.1",
+    "ng-dialog": "^0.6.6"
   },
   "devDependencies": {
     "es6-promise": "^3.1.2",

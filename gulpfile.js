@@ -11,7 +11,7 @@ var gulp = require("gulp"),
     uglify = require("gulp-uglify"),
     sourcemaps = require("gulp-sourcemaps");
 
-var BOWER_PATH = "./bower_components/";
+var MODULES_PATH = "./node_modules/";
 
 gulp.task("connect", function() {
   connect.server({
@@ -36,8 +36,8 @@ gulp.task("html", function() {
 
 gulp.task("js", function() {
   var js = [
-    BOWER_PATH + "angular/angular.min.js",
-    BOWER_PATH + "ng-dialog/js/ngDialog.min.js",
+    MODULES_PATH + "angular/angular.min.js",
+    MODULES_PATH + "ng-dialog/js/ngDialog.min.js",
     "./app/*.js"
   ];
 
@@ -58,8 +58,8 @@ gulp.task("js", function() {
 gulp.task("css", function() {
   return gulp.src([
       "./app/*.scss",
-      BOWER_PATH + "ng-dialog/css/ngDialog.min.css",
-      BOWER_PATH + "ng-dialog/css/ngDialog-theme-plain.min.css"
+      MODULES_PATH + "ng-dialog/css/ngDialog.min.css",
+      MODULES_PATH + "ng-dialog/css/ngDialog-theme-plain.min.css"
     ])
     .pipe(sass.sync().on("error", sass.logError))
     .pipe(concat("app.css"))
