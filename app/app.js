@@ -14,7 +14,7 @@ angular.module("app", ["templates", "ngDialog"])
 
   $scope.inProgress = [
     {
-      "name": "IT Engineer",
+      "name": "Web Developer",
       "where": "TrackInsight",
       "job": true,
       "avatar": true
