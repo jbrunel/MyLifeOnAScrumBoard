@@ -9,7 +9,8 @@ var gulp = require("gulp"),
     templateCache = require("gulp-angular-templatecache"),
     cssnano = require("gulp-cssnano"),
     uglify = require("gulp-uglify"),
-    sourcemaps = require("gulp-sourcemaps");
+    sourcemaps = require("gulp-sourcemaps"),
+    autoprefixer = require("gulp-autoprefixer");
 
 var MODULES_PATH = "./node_modules/";
 
@@ -62,6 +63,10 @@ gulp.task("css", function() {
       MODULES_PATH + "ng-dialog/css/ngDialog-theme-plain.min.css"
     ])
     .pipe(sass.sync().on("error", sass.logError))
+    .pipe(autoprefixer({
+      browsers: ['last 3 versions'],
+      cascade: false
+    }))
     .pipe(concat("app.css"))
     .pipe(sourcemaps.init())
     .pipe(cssnano())

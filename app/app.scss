@@ -1,7 +1,5 @@
-@import 'utils';
-
 @font-face {
-  font-family: "Chunkster Jamz";
+  font-family: 'Chunkster Jamz';
   font-stretch: expanded;
   src: url(../fonts/ChunksterJamz.ttf);
 }
@@ -15,139 +13,140 @@ html {
 
   body, body > * {
     color: #000000;
-    font-family: "Chunkster Jamz", sans-serif;
+    font-family: 'Chunkster Jamz', cursive;
     padding: 0;
     margin: 0;
   }
 }
 
-background {
-  content: " ";
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: -999;
-  display: block;
-  background: url("../img/background.jpg") no-repeat fixed 50% 0%/cover;
-  min-width: 100%;
-  min-height: 100%;
-  @include prefixProperty(filter, blur(7px), webkit moz ms o);
-  @include prefixProperty(transform, scale(1.45) translateY(0px), webkit moz ms o);
-}
-
-h1 {
-  font-size: 4.5rem;
-  text-align: center;
-  margin: 2rem 0 0;
-}
-
-header {
-  display: block;
-  width: 100%;
-  font-size: 3.5rem;
-  text-align: center;
-}
-
-section.links {
-  text-align: center;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  a {
-    color: #2b2b2b;
-    text-decoration: none;
-    display: inline-block;
-    padding: 0 0.5rem;
+main {
+  &:after {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -999;
+    display: block;
+    background: url('../img/background.png') no-repeat fixed 50% 0%/cover;
   }
-}
 
-section.board {
-  max-width: 140rem;
-  margin: 2em auto;
-  display: flex;
-  flex-flow: row wrap;
+  h1 {
+    font-size: 4.5rem;
+    text-align: center;
+    margin: 2rem 0 0;
+  }
 
   header {
-    font-size: 2.9rem;
+    display: block;
+    width: 100%;
+    font-size: 3.5rem;
+    text-align: center;
   }
 
-  div.column {
-    flex: 1 1 20rem;
-    padding: 1rem;
+  section.links {
     text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    a {
+      color: #2b2b2b;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0 0.5rem;
+    }
+  }
+
+  section.board {
+    max-width: 140rem;
+    margin: 2em auto;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    align-content: flex-start;
+
+    header {
+      font-size: 2.9rem;
+    }
+
+    div.column {
+      flex: 1 1 20rem;
+      padding: 1rem;
+      text-align: center;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      align-content: flex-start;
+    }
+
   }
 
-}
-
-.dropTarget {
-  display: none;
-  background-color: rgba(50, 50, 50, 0.3);
-  border: 0.3rem dashed #404040;
-  flex: 1 1 20rem;
-  max-width: 16rem;
-  min-height: 11rem;
-  padding: 1.7rem;
-  margin: 1rem 0.5rem 0.5rem;
-}
-
-.dragInProgress .dropTarget {
-  display: block;
-
-  &.over {
-    background-color: rgba(50, 50, 50, 0.1);
-  }
-}
-
-.postit {
-  position: relative;
-  display: block;
-  font-family: "Chunkster Jamz", cursive;
-  padding: 2rem;
-  margin: 1rem 0.5rem 0.5rem;
-  font-size: 2rem;
-  vertical-align: middle;
-  flex: 1 1 20rem;
-  max-width: 16rem;
-  min-height: 11rem;
-  box-shadow: 0 15px 5px 0 rgba(42, 42, 42, 0.4);
-  line-height: 2.8rem;
-
-  &.yellow {
-    background-color: #f8ef7a;
-    background: linear-gradient(135deg, #f8ef7a 0%, #f8ef7a 75%, #f7f0a3 100%);
+  .dropTarget {
+    display: none;
+    background-color: rgba(50, 50, 50, 0.3);
+    border: 0.3rem dashed #404040;
+    flex: 1 1 20rem;
+    max-width: 16rem;
+    min-height: 11rem;
+    padding: 1.7rem;
+    margin: 1rem 0.5rem 0.5rem;
   }
 
-  &.blue {
-    background-color: #c9d4ff;
-    background: linear-gradient(135deg, #c9d4ff 0%, #c9d4ff 75%, #e0e7ff 100%);
-  }
-
-  &.pink {
-    background-color: #e2acbe;
-    background: linear-gradient(135deg, #e2acbe 0%, #e2acbe 75%, #ddbac5 100%);
-  }
-
-  &.avatar:after {
-    content: "";
-    position: absolute;
+  .dragInProgress .dropTarget {
     display: block;
-    right: -19px;
-    bottom: -12px;
-    width: 9rem;
-    height: 9rem;
-    z-index: 999;
-    background: url("../img/avatar.png") no-repeat center/cover;
-    @include prefixProperty(filter, drop-shadow(0 5px 5px rgba(42, 42, 42, 0.4)), webkit moz ms o);
+
+    &.over {
+      background-color: rgba(50, 50, 50, 0.1);
+    }
   }
 
-  &[draggable=true] {
-    @include prefixValue(cursor, grab, webkit moz ms o);
-    &:active {
-      @include prefixValue(cursor, grabbing, webkit moz ms o);
+  .postit {
+    font-family: 'Chunkster Jamz', cursive;
+    position: relative;
+    display: block;
+    padding: 2rem;
+    margin: 1rem 0.5rem 0.5rem;
+    font-size: 2rem;
+    vertical-align: middle;
+    flex: 1 1 20rem;
+    max-width: 16rem;
+    min-height: 11rem;
+    box-shadow: 0 15px 5px 0 rgba(42, 42, 42, 0.4);
+    line-height: 2.8rem;
+
+    &.yellow {
+      background-color: #f8ef7a;
+      background: linear-gradient(135deg, #f8ef7a 0%, #f8ef7a 75%, #f7f0a3 100%);
+    }
+
+    &.blue {
+      background-color: #c9d4ff;
+      background: linear-gradient(135deg, #c9d4ff 0%, #c9d4ff 75%, #e0e7ff 100%);
+    }
+
+    &.pink {
+      background-color: #e2acbe;
+      background: linear-gradient(135deg, #e2acbe 0%, #e2acbe 75%, #ddbac5 100%);
+    }
+
+    &.avatar:after {
+      content: '';
+      position: absolute;
+      display: block;
+      right: -19px;
+      bottom: -12px;
+      width: 9rem;
+      height: 9rem;
+      z-index: 999;
+      background: url('../img/avatar.png') no-repeat center/cover;
+      filter: drop-shadow(0 5px 5px rgba(42, 42, 42, 0.4));
+    }
+
+    &[draggable=true] {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
     }
   }
 }

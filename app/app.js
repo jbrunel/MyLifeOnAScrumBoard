@@ -80,17 +80,6 @@ angular.module('app', ['templates', 'ngDialog'])
   };
 
 }])
-.directive('background', ['$window', '$document', function($window, $document) {
-  return {
-    restrict: 'E',
-    link: function(scope, element) {
-      angular.element($window).bind('scroll', function() {
-        var percentage = Math.floor(Math.min(($window.pageYOffset/($document[0].body.clientHeight - $window.innerHeight)) * 100, 100));
-        element.css('transform', 'scale(1.45) translateY(' + -percentage + 'px)');
-      });
-    }
-  };
-}])
 .directive('postit', ['$document', function($document) {
   return {
     restrict: 'E',
