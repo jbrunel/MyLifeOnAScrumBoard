@@ -14,14 +14,19 @@ angular.module('app', ['templates', 'ngDialog'])
 
   $scope.inProgress = [
     {
-      'name': 'Web Developer',
-      'where': 'TrackInsight',
+      'name': 'Web Creator',
+      'where': 'Freelance',
       'job': true,
       'avatar': true
     }
   ];
 
   $scope.done = [
+    {
+      'name': 'Web Developer',
+      'where': 'TrackInsight',
+      'job': true
+    },
     {
       'name': 'Web Developer',
       'where': 'Amadeus IT Group',
